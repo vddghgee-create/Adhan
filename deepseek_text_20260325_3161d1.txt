@@ -1,0 +1,23 @@
+AdhanProMobile/
+├── AdhanProMobile.csproj
+├── Program.cs
+├── App.xaml
+├── App.xaml.cs
+├── MainPage.xaml
+├── MainPage.xaml.cs
+├── Models/
+│   ├── PrayerTimes.cs
+│   └── Settings.cs
+├── Services/
+│   ├── PrayerTimeCalculator.cs
+│   ├── AudioPlayer.cs
+│   └── BackgroundPrayerService.cs
+├── Platforms/
+│   └── Android/
+│       ├── MainActivity.cs
+│       ├── AndroidManifest.xml
+│       └── AdhanBackgroundService.cs
+└── Resources/
+    └── Raw/
+        ├── adhan_default.mp3
+        └── iqamah_default.mp3
