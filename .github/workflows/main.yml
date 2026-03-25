@@ -1,0 +1,33 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install MAUI workloads
+        run: dotnet workload install maui android
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build and publish APK
+        run: dotnet publish -f net8.0-android -c Release -p:AndroidPackageFormat=apk -o ./publish
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: AdhanProMobile-APK
+          path: ./publish/*.apk
